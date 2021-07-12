@@ -32,7 +32,7 @@ jobs:
     - name: Docker-Build
       env: 
         DOCKERREGISTRY: ${{ secrets.dockerregistry }}
-      run: docker build -t "$DOCKERREGISTRY"/sqpexcnt:dev -f Dockerfile . 
+      run: docker build -t "$DOCKERREGISTRY"/sqpexcnt:v1 -f Dockerfile . 
 
     - name: Docker Login
 # You may pin to the exact commit or the version.
@@ -48,7 +48,7 @@ jobs:
     - name: Docker-Push
       env: 
         DOCKERREGISTRY: ${{ secrets.dockerregistry }}
-      run: docker push "$DOCKERREGISTRY"/sqpexcnt:dev
+      run: docker push "$DOCKERREGISTRY"/sqpexcnt:v1
 
       
     
