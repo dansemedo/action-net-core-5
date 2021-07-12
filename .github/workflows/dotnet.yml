@@ -30,7 +30,9 @@ jobs:
    
       
     - name: Docker-Build
-      run: docker build -t semedo.azurecr.io/sqpexcnt:dev -f Dockerfile . 
+      env: 
+        dockerregistry: ${{ secrets.dockerregistry }}
+      run: docker build -t "$DOCKERREGISTRY"/sqpexcnt:dev -f Dockerfile . 
 
     - name: Docker Login
 # You may pin to the exact commit or the version.
@@ -44,7 +46,9 @@ jobs:
         logout: false
 
     - name: Docker-Push
-      run: docker push semedo.azurecr.io/sqpexcnt:dev
+      env: 
+        dockerregistry: ${{ secrets.dockerregistry }}
+      run: docker push "$DOCKERREGISTRY"/sqpexcnt:dev
 
       
     
