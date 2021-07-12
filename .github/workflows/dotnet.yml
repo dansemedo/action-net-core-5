@@ -37,8 +37,8 @@ jobs:
     - name: Docker-Build
       run: docker build -t ssss.azurecr.io/sqpexcnt:dev -f Dockerfile . 
       
-    - name: Docker-Push
-      run: docker push azurecr.io/sqpexcnt:dev
+    # - name: Docker-Push
+    #   run: docker push azurecr.io/sqpexcnt:dev
 
       
     
