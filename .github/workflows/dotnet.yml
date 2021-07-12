@@ -30,7 +30,7 @@ jobs:
    
       
     - name: Docker-Build
-      run: docker build -t ssss.azurecr.io/sqpexcnt:dev -f Dockerfile . 
+      run: docker build -t semedo.azurecr.io/sqpexcnt:dev -f Dockerfile . 
 
     - name: Docker Login
 # You may pin to the exact commit or the version.
@@ -43,15 +43,8 @@ jobs:
         password: ${{ secrets.dockerpassword }}
         logout: false
 
-    # - name: Docker-Login
-    #   env:
-    #     DOCKER_USERNAME: ${{ secrets.dockerusername }}
-    #     DOCKER_PASSWORD: ${{ secrets.dockerpassword }}
-    #     DOCKER_REGISTRY: ${{ secrets.registry }}
-    #   run: docker login $DOCKER_REGISTRY.azurecr.io --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
-      
-    # - name: Docker-Push
-    #   run: docker push azurecr.io/sqpexcnt:dev
+    - name: Docker-Push
+      run: docker push semedo.azurecr.io/sqpexcnt:dev
 
       
     
