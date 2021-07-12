@@ -13,6 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v1.8.1
       with:
@@ -26,5 +27,21 @@ jobs:
     - name: Publish
       run: dotnet publish -c Release
       
+    - name: Docker-Login
+      env:
+        DOCKER_USERNAME: ${{ secrets.dockerusername }}
+        DOCKER_PASSWORD: ${{ secrets.dockerpassword }}
+        DOCKER_REGISTRY: ${{ secrets.registry }}
+      run: docker login $DOCKER_REGISTRY.azurecr.io --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+      
+    - name: Docker-Build
+      run: docker build -t sinqia.azurecr.io/sqpexcnt:dev -f Dockerfile . 
+      
+    - name: Docker-Push
+      run: docker push azurecr.io/sqpexcnt:dev
+
+      
+    
+  
       
       
